@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 프롬프트 엔지니어링 4일 커리큘럼</title>
+<style>
+  :root { --accent:#24d8c8; --orange:#ff5a1f; --ink:#1e2730; --muted:#66727f; --line:#d8dde3; --paper:#e9edf1; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif; letter-spacing:0; }
+  .deck { width:min(1180px,100%); margin:0 auto; padding:28px 18px 60px; }
+  .slide { position:relative; min-height:760px; background:#fff; margin:0 0 28px; padding:42px 54px 52px; box-shadow:0 10px 28px rgba(25,35,45,.14); overflow:hidden; }
+  .slide::before { content:""; position:absolute; inset:0 0 auto; height:10px; background:var(--accent); }
+  .cover { color:#fff; background:linear-gradient(90deg,rgba(6,8,12,.86),rgba(6,8,12,.44)), url("assets/images/img-71.jpg") center/cover; }
+  .brand { display:flex; align-items:center; justify-content:space-between; gap:24px; color:#9aa5ad; font-size:13px; text-transform:lowercase; letter-spacing:.4px; }
+  .brand b { color:#323d46; font-weight:800; }
+  .cover .brand { color:rgba(255,255,255,.72); }
+  .kicker { margin-top:42px; color:var(--orange); font-size:22px; font-weight:800; }
+  h1 { margin:10px 0 0; font-size:58px; line-height:1.04; font-weight:900; letter-spacing:0; }
+  h2 { margin:10px 0 14px; font-size:38px; line-height:1.12; font-weight:850; letter-spacing:0; }
+  .subtitle { margin:18px 0 0; max-width:820px; color:rgba(255,255,255,.84); font-size:21px; line-height:1.6; }
+  .module-subtitle { margin:0 0 28px; color:var(--muted); font-size:18px; }
+  .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:44px; }
+  .meta { border-top:3px solid var(--accent); padding-top:14px; font-size:15px; line-height:1.7; }
+  .info-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:start; margin-top:24px; }
+  .info-panel { border:1px solid var(--line); background:#fbfcfd; padding:26px; min-height:270px; }
+  .info-panel h3 { margin:0 0 14px; color:var(--orange); font-size:24px; }
+  .info-panel p { margin:0; color:#3d424b; font-size:18px; line-height:1.72; }
+  .tool-list { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .tool-list span { border:1px solid var(--line); background:#fff; padding:8px 12px; font-size:14px; font-weight:800; }
+  .days { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:18px; }
+  .day-card { border:1px solid var(--line); background:#fff; min-height:430px; display:flex; flex-direction:column; }
+  .image-wrap { height:178px; background:#20252b; display:grid; place-items:center; overflow:hidden; }
+  .image-trigger { width:100%; border:0; padding:0; cursor:zoom-in; touch-action:manipulation; }
+  .image-trigger:focus-visible { outline:4px solid var(--accent); outline-offset:-4px; }
+  .image-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .22s ease; }
+  .image-trigger:hover img { transform:scale(1.04); }
+  .day-copy { padding:18px; }
+  .day-num { color:var(--orange); font-size:22px; line-height:1; font-weight:900; margin-bottom:10px; }
+  h3 { margin:0 0 8px; font-size:18px; line-height:1.35; font-weight:850; letter-spacing:0; }
+  .day-copy p { margin:0 0 10px; color:#5f6873; font-size:14px; font-weight:800; }
+  ul { margin:0; padding-left:18px; }
+  li { margin:4px 0; color:#3f4550; font-size:14px; line-height:1.45; }
+  .lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(8,12,18,.88); }
+  .lightbox.is-open { display:flex; }
+  .lightbox-dialog { width:min(96vw,1120px); max-height:94vh; display:grid; grid-template-rows:auto 1fr; gap:12px; }
+  .lightbox-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; color:#fff; font-size:15px; line-height:1.4; }
+  .lightbox-close { width:42px; height:42px; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:rgba(255,255,255,.08); color:#fff; font-size:30px; line-height:1; cursor:pointer; }
+  .lightbox-close:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+  .lightbox-stage { min-height:0; display:grid; place-items:center; overflow:auto; }
+  .lightbox-stage img { max-width:100%; max-height:calc(94vh - 68px); width:auto; height:auto; object-fit:contain; background:#20252b; box-shadow:0 18px 48px rgba(0,0,0,.45); }
+  .footer { position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; color:#9aa5ad; font-size:12px; }
+  @media print {
+    body { background:#fff; }
+    .deck { width:100%; padding:0; }
+    .slide { box-shadow:none; margin:0; min-height:100vh; page-break-after:always; }
+  }
+  @media (max-width:1000px) {
+    .days { grid-template-columns:repeat(2,1fr); }
+    .info-grid, .meta-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px) {
+    .slide { padding:34px 24px 48px; }
+    h1 { font-size:40px; }
+    .days, .info-grid, .meta-grid { grid-template-columns:1fr; }
+    .footer { left:24px; right:24px; }
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+  <section class="slide cover">
+    <div class="brand"><b>sbs academy computer art</b><span>AI Prompt Engineering Curriculum</span></div>
+    <div class="kicker">4일 과정 그대로 구성</div>
+    <h1>AI 프롬프트<br>엔지니어링</h1>
+    <p class="subtitle">하루가 다르게 변하는 AI 시장의 다양한 툴을 사용해 보고, 프롬프트 엔지니어링 기법을 학습해 어떤 AI 툴을 사용하더라도 원하는 결과를 얻을 수 있도록 하는 과정입니다.</p>
+    <div class="meta-grid">
+      <div class="meta"><b>사용소프트웨어</b><br>Wrtn, ChatGPT, Midjourney, Gemini 등</div>
+      <div class="meta"><b>훈련 목표</b><br>AI 툴이 달라져도 원하는 결과를 얻는 프롬프트 작성 능력 강화</div>
+      <div class="meta"><b>수업 방식</b><br>실무 AI 툴 활용, 프롬프트 작성, 결과물 공유 중심 실습</div>
+      <div class="meta"><b>활용 분야</b><br>사무, 디자인, 영상, 인테리어, 코딩 등 다양한 직무</div>
+    </div>
+    <div class="footer"><span>AI 프롬프트 엔지니어링</span><span>Cover</span></div>
+  </section>
+  <section class="slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Course Overview</span></div>
+    <div class="kicker">수업 목표 및 설명</div>
+    <h2>AI 프롬프트 엔지니어링</h2>
+    <div class="info-grid">
+      <div class="info-panel">
+        <h3>수업 목표</h3>
+        <p>하루가 다르게 변하는 AI 시장의 다양한 툴을 사용해 보고, 프롬프트 엔지니어링 기법을 학습해 어떤 AI 툴을 사용하더라도 원하는 결과를 얻을 수 있도록 하는 과정입니다.</p>
+      </div>
+      <div class="info-panel">
+        <h3>수업 설명</h3>
+        <p>프롬프트 엔지니어링 기초 이론과 실습을 함께 진행하며 Wrtn, ChatGPT, Midjourney, Gemini 등 주요 AI 도구를 직접 다룹니다. 수강생이 작성한 프롬프트와 결과물을 공유하며, 같은 도구라도 프롬프트 구성에 따라 결과물이 어떻게 달라지는지 체감하도록 구성했습니다.</p>
+        <div class="tool-list"><span>Wrtn</span><span>ChatGPT</span><span>Midjourney</span><span>Gemini</span><span>Dreamina</span><span>Kling AI</span></div>
+      </div>
+    </div>
+    <div class="footer"><span>AI 프롬프트 엔지니어링</span><span>Overview</span></div>
+  </section>
+  
+  <section class="slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Daily Lesson Program</span></div>
+    <div class="kicker">AI Prompt Engineering · 4 Days</div>
+    <h2>AI 프롬프트 엔지니어링 1</h2>
+    <p class="module-subtitle">Wrtn, ChatGPT, Gemini를 활용한 프롬프트 기초와 자격증 대비</p>
+    <div class="days">
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-41.png" data-caption="1일차 · AI 기초이론" aria-label="1일차 이미지 크게 보기">
+      <img src="assets/images/img-41.png" alt="1일차 AI 기초이론">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">1일차</div>
+      <h3>OT 및 뤼튼 활용</h3>
+      <p>AI 기초이론</p>
+      <ul><li>뤼튼 &amp; ChatGPT 가입</li><li>AI 기초 이론 알아보기</li><li>뤼튼 활용해보기</li></ul>
+    </div>
+  </article>
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-42.jpg" data-caption="2일차 · 프롬프트 기법 활용하기 - 페르소나, 샷, 후카츠" aria-label="2일차 이미지 크게 보기">
+      <img src="assets/images/img-42.jpg" alt="2일차 프롬프트 기법 활용하기 - 페르소나, 샷, 후카츠">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">2일차</div>
+      <h3>프롬프트 엔지니어링 1</h3>
+      <p>프롬프트 기법 활용하기 - 페르소나, 샷, 후카츠</p>
+      <ul><li>LLM의 의미 및 역할</li><li>페르소나, 샷 개념 학습</li><li>ChatGPT에서 키워드를 활용한 이미지 생성</li></ul>
+    </div>
+  </article>
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-43.jpg" data-caption="3일차 · 프롬프트 기법 활용하기 - 마크다운, COT, TOT 등" aria-label="3일차 이미지 크게 보기">
+      <img src="assets/images/img-43.jpg" alt="3일차 프롬프트 기법 활용하기 - 마크다운, COT, TOT 등">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">3일차</div>
+      <h3>프롬프트 엔지니어링 2</h3>
+      <p>프롬프트 기법 활용하기 - 마크다운, COT, TOT 등</p>
+      <ul><li>할루시네이션과 AI 윤리</li><li>마크다운 기법과 후카츠 프롬프트</li><li>COT, TOT 등 사고 확장 기법 학습</li></ul>
+    </div>
+  </article>
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-44.png" data-caption="4일차 · AI 자격증 대비 문제풀이" aria-label="4일차 이미지 크게 보기">
+      <img src="assets/images/img-44.png" alt="4일차 AI 자격증 대비 문제풀이">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">4일차</div>
+      <h3>GPT/Gemini 활용</h3>
+      <p>AI 자격증 대비 문제풀이</p>
+      <ul><li>DALL-E, 블로그 생성 GPT 등 다양한 GPT 활용</li><li>내 GPT 만들기</li><li>ChatGPT 캔버스 기능 활용</li><li>Google AI Gemini 활용 및 GPT와 비교</li></ul>
+    </div>
+  </article></div>
+    <div class="footer"><span>AI 프롬프트 엔지니어링 1</span><span>3</span></div>
+  </section>
+  <section class="slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Daily Lesson Program</span></div>
+    <div class="kicker">AI Prompt Engineering · 4 Days</div>
+    <h2>AI 프롬프트 엔지니어링 2</h2>
+    <p class="module-subtitle">이미지 생성형 AI와 영상화 툴을 활용한 실무 프롬프트 확장</p>
+    <div class="days">
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-71.jpg" data-caption="1일차 · Dreamina &amp; Kling" aria-label="1일차 이미지 크게 보기">
+      <img src="assets/images/img-71.jpg" alt="1일차 Dreamina &amp; Kling">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">1일차</div>
+      <h3>Dreamina &amp; Kling</h3>
+      <p>Dreamina &amp; Kling</p>
+      <ul><li>Dreamina + DALL-E 활용</li><li>영어 프롬프트로 고퀄리티 이미지 생성</li><li>Kling AI를 통한 이미지의 영상화</li></ul>
+    </div>
+  </article>
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-72.jpg" data-caption="2일차 · Midjourney 기초" aria-label="2일차 이미지 크게 보기">
+      <img src="assets/images/img-72.jpg" alt="2일차 Midjourney 기초">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">2일차</div>
+      <h3>Midjourney 기초</h3>
+      <p>Midjourney 기초</p>
+      <ul><li>미드저니 가입 및 결제</li><li>기초 미드저니 웹 Settings</li><li>미드저니 디스코드 기본 사용법</li></ul>
+    </div>
+  </article>
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-73.jpg" data-caption="3일차 · Midjourney 심화" aria-label="3일차 이미지 크게 보기">
+      <img src="assets/images/img-73.jpg" alt="3일차 Midjourney 심화">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">3일차</div>
+      <h3>Midjourney 심화</h3>
+      <p>Midjourney 심화</p>
+      <ul><li>미드저니 명령어 사용해 보기</li><li>ChatGPT를 활용한 미드저니 프롬프트 만들기</li><li>키워드를 활용한 이미지 생성</li></ul>
+    </div>
+  </article>
+  <article class="day-card">
+    <button class="image-wrap image-trigger" type="button" data-full="assets/images/img-74.jpg" data-caption="4일차 · Gemini(나노바나나)" aria-label="4일차 이미지 크게 보기">
+      <img src="assets/images/img-74.jpg" alt="4일차 Gemini(나노바나나)">
+    </button>
+    <div class="day-copy">
+      <div class="day-num">4일차</div>
+      <h3>Gemini(Nano banana)</h3>
+      <p>Gemini(나노바나나)</p>
+      <ul><li>Google AI의 나노바나나를 이용한 AI 이미지 생성 체험</li></ul>
+    </div>
+  </article></div>
+    <div class="footer"><span>AI 프롬프트 엔지니어링 2</span><span>4</span></div>
+  </section>
+</main>
+<div class="lightbox" id="imageLightbox" aria-hidden="true">
+  <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="원본 이미지 보기">
+    <div class="lightbox-bar">
+      <span id="lightboxCaption"></span>
+      <button class="lightbox-close" type="button" aria-label="닫기">&times;</button>
+    </div>
+    <div class="lightbox-stage"><img id="lightboxImage" src="" alt=""></div>
+  </div>
+</div>
+<script>
+(() => {
+  const lightbox = document.getElementById('imageLightbox');
+  const image = document.getElementById('lightboxImage');
+  const caption = document.getElementById('lightboxCaption');
+  const closeButton = lightbox.querySelector('.lightbox-close');
+  let lastTrigger = null;
+  function openLightbox(trigger) {
+    lastTrigger = trigger;
+    image.src = trigger.dataset.full;
+    image.alt = trigger.querySelector('img')?.alt || trigger.dataset.caption || '';
+    caption.textContent = trigger.dataset.caption || '';
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    image.src = '';
+    if (lastTrigger) lastTrigger.focus();
+  }
+  document.querySelectorAll('.image-trigger').forEach(trigger => trigger.addEventListener('click', () => openLightbox(trigger)));
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox(); });
+})();
+</script>
+</body>
+</html>
