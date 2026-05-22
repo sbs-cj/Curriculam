@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FigmaAI 활용 랜딩페이지 디자인 실무</title>
+<style>
+  :root { --accent:#8b5cf6; --ink:#191b20; --muted:#6d727c; --line:#e2e5eb; --paper:#edf0f4; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif; letter-spacing:0; }
+  .deck { width:min(1180px,100%); margin:0 auto; padding:28px 18px 60px; }
+  .slide { position:relative; min-height:760px; margin:0 0 28px; padding:42px 54px 52px; background:#fff; box-shadow:0 10px 28px rgba(25,35,45,.14); overflow:hidden; }
+  .slide::before { content:""; position:absolute; inset:0 0 auto; height:10px; background:var(--accent); }
+  .cover { color:#fff; background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.34)), url("assets/images/img-354.jpg") center/cover; }
+  .brand { display:flex; align-items:center; justify-content:space-between; gap:24px; color:#9aa5ad; font-size:13px; text-transform:lowercase; }
+  .brand b { color:inherit; font-weight:800; }
+  .cover .brand { color:rgba(255,255,255,.72); }
+  .kicker { margin-top:42px; color:var(--accent); font-size:21px; font-weight:800; }
+  h1 { margin:12px 0 0; font-size:58px; line-height:1.04; font-weight:900; letter-spacing:0; }
+  h2 { margin:10px 0 24px; font-size:38px; line-height:1.12; font-weight:850; letter-spacing:0; }
+  .subtitle { margin:18px 0 0; max-width:780px; color:rgba(255,255,255,.82); font-size:22px; line-height:1.55; }
+  .info-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:start; }
+  .info-panel { border:1px solid var(--line); padding:26px; background:#fbfcfd; min-height:260px; }
+  .info-panel h3 { margin:0 0 14px; color:var(--accent); font-size:24px; }
+  .info-panel p { margin:0; color:#3d424b; font-size:18px; line-height:1.7; }
+  .tool-list { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .tool-list span { border:1px solid var(--line); background:#fff; padding:8px 12px; font-size:14px; font-weight:800; }
+  .days { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .day-card { border:1px solid var(--line); background:#fff; min-height:332px; display:flex; flex-direction:column; }
+  .media-set { height:176px; background:#111; display:grid; overflow:hidden; }
+  .media-set.is-multi { grid-template-columns:repeat(2,1fr); gap:2px; }
+  .image-trigger { width:100%; height:100%; border:0; padding:0; cursor:zoom-in; background:#111; overflow:hidden; touch-action:manipulation; }
+  .image-trigger img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .22s ease; }
+  .image-trigger:hover img { transform:scale(1.04); }
+  .image-trigger:focus-visible { outline:4px solid var(--accent); outline-offset:-4px; }
+  .day-copy { padding:18px 18px 20px; }
+  .day-num { color:var(--accent); font-size:22px; line-height:1; font-weight:900; margin-bottom:10px; }
+  h3 { margin:0 0 8px; font-size:18px; line-height:1.35; letter-spacing:0; }
+  ul { margin:0; padding-left:18px; }
+  li { margin:4px 0; color:#3f4550; font-size:14px; line-height:1.45; }
+  .footer { position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; color:#9aa5ad; font-size:12px; }
+  .lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(8,12,18,.88); }
+  .lightbox.is-open { display:flex; }
+  .lightbox-dialog { width:min(96vw,1120px); max-height:94vh; display:grid; grid-template-rows:auto 1fr; gap:12px; }
+  .lightbox-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; color:#fff; font-size:15px; line-height:1.4; }
+  .lightbox-close { width:42px; height:42px; border:1px solid rgba(255,255,255,.45); border-radius:50%; background:rgba(255,255,255,.08); color:#fff; font-size:30px; line-height:1; cursor:pointer; }
+  .lightbox-stage { min-height:0; display:grid; place-items:center; overflow:auto; }
+  .lightbox-stage img { max-width:100%; max-height:calc(94vh - 68px); width:auto; height:auto; object-fit:contain; background:#20252b; box-shadow:0 18px 48px rgba(0,0,0,.45); }
+  @media print {
+    body { background:#fff; }
+    .deck { width:100%; padding:0; }
+    .slide { box-shadow:none; margin:0; min-height:100vh; page-break-after:always; }
+  }
+  @media (max-width:900px) {
+    .slide { padding:34px 24px 48px; }
+    h1 { font-size:40px; }
+    .days, .info-grid { grid-template-columns:1fr; }
+    .footer { left:24px; right:24px; }
+  }
+</style>
+</head>
+<body>
+<main class="deck">
+  <section class="slide cover">
+    <div class="brand"><b>sbs academy computer art</b><span>AI Curriculum</span></div>
+    <div class="kicker">Figma AI · 3시간 x 12회차</div>
+    <h1>FigmaAI 활용 랜딩페이지 디자인 실무</h1>
+    <p class="subtitle">Figma의 화면 설계 기능과 Figma AI를 활용해 랜딩페이지 구조를 기획하고, 서비스 소개형 랜딩페이지 시안을 완성하는 과정입니다.</p>
+    <div class="footer"><span>FigmaAI 활용 랜딩페이지 디자인 실무</span><span>Cover</span></div>
+  </section>
+  <section class="slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Course Overview</span></div>
+    <div class="kicker">수업 목표 및 설명</div>
+    <h2>FigmaAI 활용 랜딩페이지 디자인 실무</h2>
+    <div class="info-grid">
+      <div class="info-panel">
+        <h3>수업 목표</h3>
+        <p>Figma의 화면 설계 기능과 Figma AI를 활용해 랜딩페이지 구조를 기획하고, 서비스 소개형 랜딩페이지 시안을 완성하는 과정입니다.</p>
+      </div>
+      <div class="info-panel">
+        <h3>수업 설명</h3>
+        <p>프레임, 섹션, 와이어 구조, 텍스트와 이미지 배치 원리를 학습한 뒤 Figma AI를 활용해 자동 레이아웃과 텍스트 생성을 적용합니다. 후반부에는 헤더, 메인 비주얼, 서비스 설명 영역, CTA까지 이어지는 랜딩페이지를 제작하고 최종 포트폴리오 형태로 정리합니다.</p>
+        <div class="tool-list"><span>Figma</span><span>Figma AI</span></div>
+      </div>
+    </div>
+    <div class="footer"><span>FigmaAI 활용 랜딩페이지 디자인 실무</span><span>Overview</span></div>
+  </section>
+  <section class="slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Daily Lesson Program</span></div>
+    <div class="kicker">3시간 x 12회차</div>
+    <h2>일차별 커리큘럼</h2>
+    <div class="days">
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-354.jpg" data-caption="1일차 · Figma의 이해">
+    <img src="assets/images/img-354.jpg" alt="1일차 · Figma의 이해">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">1일차</div>
+        <h3>Figma의 이해</h3>
+        <ul><li>Figma 기본 작업 방식 이해</li><li>UI 디자인 제작 흐름 파악</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-354.jpg" data-caption="2일차 · 화면 구조와 프레임 개념">
+    <img src="assets/images/img-354.jpg" alt="2일차 · 화면 구조와 프레임 개념">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">2일차</div>
+        <h3>화면 구조와 프레임 개념</h3>
+        <ul><li>프레임 개념 학습</li><li>화면 단위와 디자인 캔버스 구조 이해</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-372.jpg" data-caption="3일차 · 레이아웃">
+    <img src="assets/images/img-372.jpg" alt="3일차 · 레이아웃">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">3일차</div>
+        <h3>레이아웃</h3>
+        <ul><li>레이아웃의 기본 원리 학습</li><li>화면 구성의 시각적 질서 이해</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-372.jpg" data-caption="4일차 · 섹션 구조와 와이어 구조">
+    <img src="assets/images/img-372.jpg" alt="4일차 · 섹션 구조와 와이어 구조">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">4일차</div>
+        <h3>섹션 구조와 와이어 구조</h3>
+        <ul><li>상단/중간/하단 섹션 구조 설계</li><li>와이어 구조를 통한 랜딩페이지 뼈대 구성</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set is-multi">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-398.jpg" data-caption="5일차 · 텍스트+이미지 배치">
+    <img src="assets/images/img-398.jpg" alt="5일차 · 텍스트+이미지 배치">
+  </button>
+  <button class="image-trigger" type="button" data-full="assets/images/img-399.jpg" data-caption="5일차 · 텍스트+이미지 배치">
+    <img src="assets/images/img-399.jpg" alt="5일차 · 텍스트+이미지 배치 1">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">5일차</div>
+        <h3>텍스트+이미지 배치</h3>
+        <ul><li>텍스트와 이미지의 역할 구분</li><li>가독성과 주목도를 고려한 배치</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set is-multi">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-398.jpg" data-caption="6일차 · 콘텐츠 배치 원리">
+    <img src="assets/images/img-398.jpg" alt="6일차 · 콘텐츠 배치 원리">
+  </button>
+  <button class="image-trigger" type="button" data-full="assets/images/img-399.jpg" data-caption="6일차 · 콘텐츠 배치 원리">
+    <img src="assets/images/img-399.jpg" alt="6일차 · 콘텐츠 배치 원리 1">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">6일차</div>
+        <h3>콘텐츠 배치 원리</h3>
+        <ul><li>콘텐츠 우선순위 설정</li><li>정보 흐름에 맞춘 화면 구성</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-421.jpg" data-caption="7일차 · Figma AI 활용">
+    <img src="assets/images/img-421.jpg" alt="7일차 · Figma AI 활용">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">7일차</div>
+        <h3>Figma AI 활용</h3>
+        <ul><li>Figma AI 기능 이해</li><li>디자인 보조 기능 활용</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-421.jpg" data-caption="8일차 · 자동 레이아웃 / 텍스트 생성">
+    <img src="assets/images/img-421.jpg" alt="8일차 · 자동 레이아웃 / 텍스트 생성">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">8일차</div>
+        <h3>자동 레이아웃 / 텍스트 생성</h3>
+        <ul><li>자동 레이아웃 생성 실습</li><li>랜딩페이지용 텍스트 생성</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-443.jpg" data-caption="9일차 · 랜딩페이지 제작 1">
+    <img src="assets/images/img-443.jpg" alt="9일차 · 랜딩페이지 제작 1">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">9일차</div>
+        <h3>랜딩페이지 제작 1</h3>
+        <ul><li>헤더와 메인 비주얼 제작</li><li>첫 화면에서 서비스 인지도를 높이는 구조 설계</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-443.jpg" data-caption="10일차 · 랜딩페이지 제작 2">
+    <img src="assets/images/img-443.jpg" alt="10일차 · 랜딩페이지 제작 2">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">10일차</div>
+        <h3>랜딩페이지 제작 2</h3>
+        <ul><li>서비스 설명 영역 제작</li><li>핵심 가치와 기능을 전달하는 콘텐츠 구성</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-443.jpg" data-caption="11일차 · 랜딩페이지 제작 3">
+    <img src="assets/images/img-443.jpg" alt="11일차 · 랜딩페이지 제작 3">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">11일차</div>
+        <h3>랜딩페이지 제작 3</h3>
+        <ul><li>CTA 영역 제작</li><li>랜딩페이지 전체 흐름 정리</li></ul>
+      </div>
+    </article>
+    <article class="day-card">
+      <div class="media-set ">
+        
+  <button class="image-trigger" type="button" data-full="assets/images/img-465.jpg" data-caption="12일차 · 최종 결과물 제작">
+    <img src="assets/images/img-465.jpg" alt="12일차 · 최종 결과물 제작">
+  </button>
+      </div>
+      <div class="day-copy">
+        <div class="day-num">12일차</div>
+        <h3>최종 결과물 제작</h3>
+        <ul><li>완성 시안 정리</li><li>포트폴리오용 결과물 구성</li></ul>
+      </div>
+    </article></div>
+    <div class="footer"><span>FigmaAI 활용 랜딩페이지 디자인 실무</span><span>12 Days</span></div>
+  </section>
+</main>
+<div class="lightbox" id="imageLightbox" aria-hidden="true">
+  <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="원본 이미지 보기">
+    <div class="lightbox-bar">
+      <span id="lightboxCaption"></span>
+      <button class="lightbox-close" type="button" aria-label="닫기">&times;</button>
+    </div>
+    <div class="lightbox-stage"><img id="lightboxImage" src="" alt=""></div>
+  </div>
+</div>
+<script>
+(() => {
+  const lightbox = document.getElementById('imageLightbox');
+  const image = document.getElementById('lightboxImage');
+  const caption = document.getElementById('lightboxCaption');
+  const closeButton = lightbox.querySelector('.lightbox-close');
+  let lastTrigger = null;
+  function openLightbox(trigger) {
+    lastTrigger = trigger;
+    image.src = trigger.dataset.full;
+    image.alt = trigger.querySelector('img')?.alt || trigger.dataset.caption || '';
+    caption.textContent = trigger.dataset.caption || '';
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    image.src = '';
+    if (lastTrigger) lastTrigger.focus();
+  }
+  document.querySelectorAll('.image-trigger').forEach(trigger => trigger.addEventListener('click', () => openLightbox(trigger)));
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox(); });
+})();
+</script>
+</body>
+</html>
