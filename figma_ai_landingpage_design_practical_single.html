@@ -38,6 +38,14 @@
   h3 { margin:0 0 8px; font-size:18px; line-height:1.35; letter-spacing:0; }
   ul { margin:0; padding-left:18px; }
   li { margin:4px 0; color:#3f4550; font-size:14px; line-height:1.45; }
+  .consult-intro { margin:0 0 20px; padding-left:18px; border-left:6px solid var(--accent); color:#252a31; font-size:21px; line-height:1.55; font-weight:800; }
+  .consult-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .consult-card { border:1px solid var(--line); background:#fbfcfd; padding:18px 20px; min-height:138px; }
+  .consult-card.wide { grid-column:1 / -1; min-height:0; }
+  .consult-card h3 { margin:0 0 10px; color:var(--accent); font-size:20px; line-height:1.25; }
+  .consult-card p { margin:0; color:#343a43; font-size:16px; line-height:1.6; }
+  .consult-card ul { margin:0; padding-left:18px; }
+  .consult-card li { margin:5px 0; color:#3f4550; font-size:15px; line-height:1.48; }
   .footer { position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; color:#9aa5ad; font-size:12px; }
   .lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(8,12,18,.88); }
   .lightbox.is-open { display:flex; }
@@ -55,7 +63,15 @@
     .slide { padding:34px 24px 48px; }
     h1 { font-size:40px; }
     .days, .info-grid { grid-template-columns:1fr; }
-    .footer { left:24px; right:24px; }
+    .consult-intro { margin:0 0 20px; padding-left:18px; border-left:6px solid var(--accent); color:#252a31; font-size:21px; line-height:1.55; font-weight:800; }
+  .consult-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .consult-card { border:1px solid var(--line); background:#fbfcfd; padding:18px 20px; min-height:138px; }
+  .consult-card.wide { grid-column:1 / -1; min-height:0; }
+  .consult-card h3 { margin:0 0 10px; color:var(--accent); font-size:20px; line-height:1.25; }
+  .consult-card p { margin:0; color:#343a43; font-size:16px; line-height:1.6; }
+  .consult-card ul { margin:0; padding-left:18px; }
+  .consult-card li { margin:5px 0; color:#3f4550; font-size:15px; line-height:1.48; }
+  .footer { left:24px; right:24px; }
   }
 </style>
 </head>
@@ -84,6 +100,34 @@
       </div>
     </div>
     <div class="footer"><span>FigmaAI 활용 랜딩페이지 디자인 실무</span><span>Overview</span></div>
+  </section>
+  <section class="slide consult-slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Sales Guide</span></div>
+    <h2>과목 핵심 포인트</h2>
+    <p class="consult-intro">Figma와 AI 도구를 활용해 홍보용 랜딩페이지 구조를 설계하고, 서비스·제품 소개용 웹페이지 디자인 시안을 완성하는 실무형 수업입니다.</p>
+    <div class="consult-grid">
+      <article class="consult-card">
+        <h3>완성 결과물</h3>
+        <ul><li>서비스/제품 랜딩페이지 디자인 포트폴리오</li><li>와이어 구조, 콘텐츠 배치, Figma AI 활용 결과물</li><li>웹디자인·UIUX 포트폴리오 상담에 보여주기 좋은 산출물</li></ul>
+      </article>
+      <article class="consult-card">
+        <h3>추천 대상</h3>
+        <ul><li>웹디자인이나 UIUX 포트폴리오를 만들고 싶은 학생</li><li>서비스·제품 소개 페이지의 구조와 디자인을 함께 배우려는 학생</li><li>Figma를 실무 결과물 중심으로 익히고 싶은 학생</li></ul>
+      </article>
+      <article class="consult-card wide">
+        <h3>수업 흐름</h3>
+        <p>Figma 이해 → 레이아웃/와이어 구조 → 콘텐츠 배치 → Figma AI 활용 → 랜딩페이지 제작 → 포트폴리오 완성</p>
+      </article>
+      <article class="consult-card">
+        <h3>수강 전 알아두시면 좋은 점</h3>
+        <p>단순히 Figma 기능을 익히는 수업이 아니라, AI를 활용해 기획과 화면 구조를 빠르게 잡고 실제 랜딩페이지 시안으로 마감하는 과정입니다.</p>
+      </article>
+      <article class="consult-card">
+        <h3>준비 및 연계</h3>
+        <p>Figma 유료, ChatGPT 유료 사용을 안내하고 Photoshop, Illustrator 사용 가능자에게 연계 학습 효과가 좋습니다.</p>
+      </article>
+    </div>
+    <div class="footer"><span>FigmaAI 활용 랜딩페이지 디자인 실무</span><span>Sales Guide</span></div>
   </section>
   <section class="slide">
     <div class="brand"><b>sbs academy computer art</b><span>Daily Lesson Program</span></div>

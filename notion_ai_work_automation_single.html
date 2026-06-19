@@ -38,6 +38,14 @@
   h3 { margin:0 0 8px; font-size:18px; line-height:1.35; letter-spacing:0; }
   ul { margin:0; padding-left:18px; }
   li { margin:4px 0; color:#3f4550; font-size:14px; line-height:1.45; }
+  .consult-intro { margin:0 0 20px; padding-left:18px; border-left:6px solid var(--accent); color:#252a31; font-size:21px; line-height:1.55; font-weight:800; }
+  .consult-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .consult-card { border:1px solid var(--line); background:#fbfcfd; padding:18px 20px; min-height:138px; }
+  .consult-card.wide { grid-column:1 / -1; min-height:0; }
+  .consult-card h3 { margin:0 0 10px; color:var(--accent); font-size:20px; line-height:1.25; }
+  .consult-card p { margin:0; color:#343a43; font-size:16px; line-height:1.6; }
+  .consult-card ul { margin:0; padding-left:18px; }
+  .consult-card li { margin:5px 0; color:#3f4550; font-size:15px; line-height:1.48; }
   .footer { position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; color:#9aa5ad; font-size:12px; }
   .lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(8,12,18,.88); }
   .lightbox.is-open { display:flex; }
@@ -55,7 +63,15 @@
     .slide { padding:34px 24px 48px; }
     h1 { font-size:40px; }
     .days, .info-grid { grid-template-columns:1fr; }
-    .footer { left:24px; right:24px; }
+    .consult-intro { margin:0 0 20px; padding-left:18px; border-left:6px solid var(--accent); color:#252a31; font-size:21px; line-height:1.55; font-weight:800; }
+  .consult-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .consult-card { border:1px solid var(--line); background:#fbfcfd; padding:18px 20px; min-height:138px; }
+  .consult-card.wide { grid-column:1 / -1; min-height:0; }
+  .consult-card h3 { margin:0 0 10px; color:var(--accent); font-size:20px; line-height:1.25; }
+  .consult-card p { margin:0; color:#343a43; font-size:16px; line-height:1.6; }
+  .consult-card ul { margin:0; padding-left:18px; }
+  .consult-card li { margin:5px 0; color:#3f4550; font-size:15px; line-height:1.48; }
+  .footer { left:24px; right:24px; }
   }
 </style>
 </head>
@@ -84,6 +100,34 @@
       </div>
     </div>
     <div class="footer"><span>Notion AI 활용 업무 자동화</span><span>Overview</span></div>
+  </section>
+  <section class="slide consult-slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Sales Guide</span></div>
+    <h2>과목 핵심 포인트</h2>
+    <p class="consult-intro">반복 업무를 정리하고 Notion AI를 활용해 개인·팀 업무관리 시스템과 간단한 자동화 구조를 만드는 실무 압축 수업입니다.</p>
+    <div class="consult-grid">
+      <article class="consult-card">
+        <h3>완성 결과물</h3>
+        <ul><li>개인/팀 업무관리 대시보드</li><li>프로젝트 관리 템플릿</li><li>회의록, 업무 요청, 일정 관리 자동화 구조</li></ul>
+      </article>
+      <article class="consult-card">
+        <h3>추천 대상</h3>
+        <ul><li>사무·기획·운영 업무 생산성을 높이고 싶은 학생</li><li>개인 일정과 프로젝트를 체계적으로 관리하고 싶은 학생</li><li>팀 협업이나 업무 자동화 포트폴리오가 필요한 학생</li></ul>
+      </article>
+      <article class="consult-card wide">
+        <h3>수업 흐름</h3>
+        <p>Notion 기본 구조 → 데이터베이스 설계 → Notion AI 활용 → 업무 대시보드 제작 → 반복 업무 관리 자동화</p>
+      </article>
+      <article class="consult-card">
+        <h3>수강 전 알아두시면 좋은 점</h3>
+        <p>도구 화면을 따라 하는 데서 끝나지 않고, 실제 업무 흐름을 데이터베이스와 대시보드로 구조화해 바로 활용 가능한 관리 시스템을 만드는 과정입니다.</p>
+      </article>
+      <article class="consult-card">
+        <h3>준비 및 연계</h3>
+        <p>Notion 유료, ChatGPT, Claude, Slack 사용 가능 여부를 안내하면 상담 목적을 구체화하기 좋습니다.</p>
+      </article>
+    </div>
+    <div class="footer"><span>Notion AI 활용 업무 자동화</span><span>Sales Guide</span></div>
   </section>
   <section class="slide">
     <div class="brand"><b>sbs academy computer art</b><span>Daily Lesson Program</span></div>

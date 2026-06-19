@@ -38,6 +38,14 @@
   h3 { margin:0 0 8px; font-size:18px; line-height:1.35; letter-spacing:0; }
   ul { margin:0; padding-left:18px; }
   li { margin:4px 0; color:#3f4550; font-size:14px; line-height:1.45; }
+  .consult-intro { margin:0 0 20px; padding-left:18px; border-left:6px solid var(--accent); color:#252a31; font-size:21px; line-height:1.55; font-weight:800; }
+  .consult-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .consult-card { border:1px solid var(--line); background:#fbfcfd; padding:18px 20px; min-height:138px; }
+  .consult-card.wide { grid-column:1 / -1; min-height:0; }
+  .consult-card h3 { margin:0 0 10px; color:var(--accent); font-size:20px; line-height:1.25; }
+  .consult-card p { margin:0; color:#343a43; font-size:16px; line-height:1.6; }
+  .consult-card ul { margin:0; padding-left:18px; }
+  .consult-card li { margin:5px 0; color:#3f4550; font-size:15px; line-height:1.48; }
   .footer { position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; color:#9aa5ad; font-size:12px; }
   .lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(8,12,18,.88); }
   .lightbox.is-open { display:flex; }
@@ -55,7 +63,15 @@
     .slide { padding:34px 24px 48px; }
     h1 { font-size:40px; }
     .days, .info-grid { grid-template-columns:1fr; }
-    .footer { left:24px; right:24px; }
+    .consult-intro { margin:0 0 20px; padding-left:18px; border-left:6px solid var(--accent); color:#252a31; font-size:21px; line-height:1.55; font-weight:800; }
+  .consult-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .consult-card { border:1px solid var(--line); background:#fbfcfd; padding:18px 20px; min-height:138px; }
+  .consult-card.wide { grid-column:1 / -1; min-height:0; }
+  .consult-card h3 { margin:0 0 10px; color:var(--accent); font-size:20px; line-height:1.25; }
+  .consult-card p { margin:0; color:#343a43; font-size:16px; line-height:1.6; }
+  .consult-card ul { margin:0; padding-left:18px; }
+  .consult-card li { margin:5px 0; color:#3f4550; font-size:15px; line-height:1.48; }
+  .footer { left:24px; right:24px; }
   }
 </style>
 </head>
@@ -84,6 +100,34 @@
       </div>
     </div>
     <div class="footer"><span>AI 블로그 수익화</span><span>Overview</span></div>
+  </section>
+  <section class="slide consult-slide">
+    <div class="brand"><b>sbs academy computer art</b><span>Sales Guide</span></div>
+    <h2>과목 핵심 포인트</h2>
+    <p class="consult-intro">AI로 블로그 글쓰기와 콘텐츠 운영 전략을 실습하고, 애드센스·제휴마케팅 등 수익화 구조를 기초 수준에서 이해하는 입문 수업입니다.</p>
+    <div class="consult-grid">
+      <article class="consult-card">
+        <h3>완성 결과물</h3>
+        <ul><li>AI 기반 블로그 콘텐츠 기획안</li><li>SEO 글쓰기 샘플</li><li>수익화 구조 기초 설계안</li></ul>
+      </article>
+      <article class="consult-card">
+        <h3>추천 대상</h3>
+        <ul><li>블로그를 부업이나 개인 브랜딩 채널로 시작하려는 학생</li><li>AI 글쓰기를 검색 노출과 콘텐츠 품질 개선에 연결하고 싶은 학생</li><li>수익화 구조를 무리 없이 입문하고 싶은 학생</li></ul>
+      </article>
+      <article class="consult-card wide">
+        <h3>수업 흐름</h3>
+        <p>블로그 구조/SEO → AI 글쓰기 → 콘텐츠 품질 개선 → 수익화 구조 이해 → 운영 전략 수립</p>
+      </article>
+      <article class="consult-card">
+        <h3>수강 전 알아두시면 좋은 점</h3>
+        <p>AI로 글을 빨리 쓰는 방법만 배우는 수업이 아니라, 주제 선정, SEO, 콘텐츠 품질, 운영 전략까지 연결해 지속 가능한 블로그 구조를 설계합니다.</p>
+      </article>
+      <article class="consult-card">
+        <h3>준비 및 연계</h3>
+        <p>ChatGPT 유료 사용을 안내하고, 부업·창업·개인 브랜딩 목적의 학생에게 상담 연결성이 높습니다.</p>
+      </article>
+    </div>
+    <div class="footer"><span>AI 블로그 수익화</span><span>Sales Guide</span></div>
   </section>
   <section class="slide">
     <div class="brand"><b>sbs academy computer art</b><span>Daily Lesson Program</span></div>
